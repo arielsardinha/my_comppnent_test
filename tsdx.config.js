@@ -2,7 +2,7 @@
 const postcss = require('rollup-plugin-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-
+const path = require('path');
 module.exports = {
     rollup(config, options) {
         config.plugins.push(
@@ -13,7 +13,8 @@ module.exports = {
                         preset: 'default',
                     }),
                 ],
-                extract: true, // Extrai para um arquivo .css
+                // extract: 'dist/styles.css',
+                extract: path.resolve('dist/styles.css'), // Extrai para um arquivo .css
             })
         );
         return config;
